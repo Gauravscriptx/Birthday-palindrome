@@ -96,3 +96,26 @@ function getNextDate(date) {
 function getNextPalindromeDate(date) {
   var nextDate = getNextDate(date);
   var ctr = 0;
+  while (1) {
+    ctr++;
+    var dateStr = getDateAsString(nextDate);
+    var resultList = checkPalindromeForAllDateFormats(dateStr);
+
+    for (let i = 0; i < resultList.length; i++) {
+      if (resultList[i]) {
+        return [ctr, nextDate];
+      }
+    }
+    nextDate = getNextDate(nextDate);
+  }
+}
+
+function getPreviousDate(date) {
+  var day = date.day - 1;
+  var month = date.month;
+  var year = date.year;
+
+  var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+  if (day === 0) {
+    month--;
