@@ -80,7 +80,8 @@ function getNextDate(date) {
       day = 1;
       month++;
     }
-  } if (month > 12) {
+  }
+   if (month > 12) {
     month = 1;
     year++;
   }
