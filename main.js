@@ -61,3 +61,23 @@ function getNextDate(date) {
   var day = date.day + 1;
   var month = date.month;
   var year = date.year;
+  var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+  if (month === 2) {
+    if (isLeapYear(year)) {
+      if (day > 29) {
+        day = 1;
+        month = 3;
+      }
+    } else {
+      if (day > 28) {
+        day = 1;
+        month = 3;
+      }
+    }
+  } else {
+    if (day > daysInMonth[month - 1]) {
+      day = 1;
+      month++;
+    }
+  }
