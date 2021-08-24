@@ -80,4 +80,18 @@ function getNextDate(date) {
       day = 1;
       month++;
     }
+  } if (month > 12) {
+    month = 1;
+    year++;
   }
+
+  return {
+    day: day,
+    month: month,
+    year: year,
+  };
+}
+
+function getNextPalindromeDate(date) {
+  var nextDate = getNextDate(date);
+  var ctr = 0;
