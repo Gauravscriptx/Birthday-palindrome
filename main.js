@@ -140,3 +140,21 @@ function getPreviousDate(date) {
     year: year,
   };
 }
+
+function getPreviousPalindromeDate(date) {
+  var previousDate = getPreviousDate(date);
+  var ctr = 0;
+
+  while (1) {
+    ctr++;
+    var dateStr = getDateAsString(previousDate);
+    var resultList = checkPalindromeForAllDateFormats(dateStr);
+
+    for (let i = 0; i < resultList.length; i++) {
+      if (resultList[i]) {
+        return [ctr, previousDate];
+      }
+    }
+    previousDate = getPreviousDate(previousDate);
+  }
+}
