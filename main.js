@@ -81,7 +81,7 @@ function getNextDate(date) {
       month++;
     }
   }
-   if (month > 12) {
+  if (month > 12) {
     month = 1;
     year++;
   }
@@ -119,3 +119,24 @@ function getPreviousDate(date) {
 
   if (day === 0) {
     month--;
+    if (month === 0) {
+      month = 12;
+      day = 31;
+      year--;
+    } else if (month === 2) {
+      if (isLeapYear(year)) {
+        day = 29;
+      } else {
+        day = 28;
+      }
+    } else {
+      day = daysInMonth[month - 1];
+    }
+  }
+
+  return {
+    day: day,
+    month: month,
+    year: year,
+  };
+}
